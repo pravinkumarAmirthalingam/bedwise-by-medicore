@@ -53,11 +53,14 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of(
-                "http://localhost:5173",
-                "http://localhost:4173",
-                "http://127.0.0.1:5173"
+        config.setAllowedOriginPatterns(List.of(
+                "http://localhost:*",
+                "http://127.0.0.1:*",
+                "https://*.onrender.com",
+                "https://*.vercel.app",
+                "https://*.netlify.app"
         ));
+
 
         config.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "PATCH",

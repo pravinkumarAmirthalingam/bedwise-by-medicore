@@ -1,10 +1,11 @@
 import axios from 'axios'
 
 export const axiosInstance = axios.create({
-  baseURL: '/',            // Vite dev proxy handles /api → localhost:8080
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/',
   timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
 })
+
 
 export function setAuthHeader(username, password) {
   const token = btoa(`${username}:${password}`)

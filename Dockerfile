@@ -1,4 +1,3 @@
-
 # Build the Spring Boot application
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
@@ -14,4 +13,5 @@ WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
 
-CMD ["sh", "-c", "java -Dserver.port=${PORT:-10000} -jar app.jar"]
+CMD ["sh", "-c", "java -Dserver.port=${PORT:-10000} -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE:-cloud} -jar app.jar"]
+
